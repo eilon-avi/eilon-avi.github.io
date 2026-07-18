@@ -3,7 +3,7 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - main  # Set this to your default branch
+      - main
 
 permissions:
   contents: read
@@ -22,7 +22,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.164.0 # Update this to your local Hugo version
+      HUGO_VERSION: 0.164.0
     steps:
       - name: Install Hugo CLI
         run: |
@@ -31,14 +31,14 @@ jobs:
           && sudo mv hugo /usr/local/bin/
       
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
-          submodules: recursive # Crucial if you installed Blowfish via Git Submodule
+          submodules: recursive
           fetch-depth: 0
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Build with Hugo
         env:
@@ -51,7 +51,7 @@ jobs:
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./public
 
