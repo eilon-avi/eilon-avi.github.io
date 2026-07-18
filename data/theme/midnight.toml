@@ -1,0 +1,9 @@
+[light]
+  primary = "15 118 110"    # Muted Teal
+  secondary = "240 253 250" # Very faint cool-white
+  neutral = "17 24 39"      # Dark text
+
+[dark]
+  primary = "45 212 191"    # Soft, glowing Teal (Accent for links/buttons)
+  secondary = "15 23 42"    # Rich, deep midnight-blue (Background)
+  neutral = "226 232 240"   # Soft silver-white (Text - easy on the eyes)

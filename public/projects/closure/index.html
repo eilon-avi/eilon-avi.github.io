@@ -1,0 +1,1906 @@
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="en">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>Closure &middot; Eilon Avizemer | Blog</title>
+    <meta name="title" content="Closure &middot; Eilon Avizemer | Blog">
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  
+    <meta name="description" content="A tool to build PHP filter chains that will wrap any file with a given prefix and suffix">
+  
+  
+    <meta name="keywords" content="PHP,PHP Filter Chains,">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/projects/closure/">
+  
+  
+
+  
+  
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/projects/closure/">
+	<meta property="og:site_name" content="Eilon Avizemer | Blog">
+	<meta property="og:title" content="Closure">
+	<meta property="og:description" content="A tool to build PHP filter chains that will wrap any file with a given prefix and suffix">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="projects">
+		<meta property="article:published_time" content="2026-07-15T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-07-15T00:00:00+00:00">
+		<meta property="article:tag" content="PHP">
+		<meta property="article:tag" content="PHP Filter Chains">
+
+  
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Closure">
+	<meta name="twitter:description" content="A tool to build PHP filter chains that will wrap any file with a given prefix and suffix">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.f56e3bef3e5f3a683bb9b88c188868831907dbc3bd7c495b73e19833e2cb213a60932eb260b7c0c3e582ecebcc9bf12ba3f4de55b17c9e1c4aec3cc2df02942c.css"
+    integrity="sha512-9W477z5fOmg7ubiMGIhogxkH28O9fElbc&#43;GYM&#43;LLITpgky6yYLfAw&#43;WC7OvMm/Ero/TeVbF8nhxK7DzC3wKULA==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.764f412f07ea715415e9123a5eb5f355429502d0b760146b9bcab854bc50829dee14488594acd935dfcdc6a0fe7e6d14d7bee914ebb9272b251aa238cb52c4dd.js"
+    integrity="sha512-dk9BLwfqcVQV6RI6XrXzVUKVAtC3YBRrm8q4VLxQgp3uFEiFlKzZNd/NxqD&#43;fm0U177pFOu5JyslGqI4y1LE3Q=="></script>
+  
+
+
+  
+  
+  
+  
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.b4b722fcb5d42f34f52b30a92f3521b69f403ca9d96d0d6179eb537cb870f5d83fdf1fe836688d95d5c99fefbda4170487711006e56051fa67ea00da10521721.js" integrity="sha512-tLci/LXULzT1KzCpLzUhtp9APKnZbQ1heetTfLhw9dg/3x/oNmiNldXJn&#43;&#43;9pBcEh3EQBuVgUfpn6gDaEFIXIQ=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.6c7b43f9c40b593e5e390623ebd29b4def2e8ee1be9808c0d766251d07ddf2e49d7222318ce52393d843ef499ea3ce1e3bcd349d2156b737de640e457d133746.js"
+      integrity="sha512-bHtD&#43;cQLWT5eOQYj69KbTe8ujuG&#43;mAjA12YlHQfd8uSdciIxjOUjk9hD70meo84eO800nSFWtzfeZA5FfRM3Rg=="
+      data-copy="Copy"
+      data-copied="Copied"></script>
+  
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/lib/katex/katex.min.143f799b64fe62c2ce4e6d7f97c1c8e4d0dd255bdb5d5c4cdd0335f3f6dbb0e5a883b9c4d46963ddd0bf278846b35bab486580fc42cde67252c564c687c47a96.css"
+    integrity="sha512-FD95m2T&#43;YsLOTm1/l8HI5NDdJVvbXVxM3QM18/bbsOWog7nE1Glj3dC/J4hGs1urSGWA/ELN5nJSxWTGh8R6lg==">
+  
+  
+  
+  <script
+    defer
+    type="text/javascript"
+    src="/js/katex.bundle.5780d8e35afcda6e3c507cb0c0eb9eee11f68c297750255042e625520fe244459d034c16561939c2ed53e92e3b8b5df80f01f5d420fbf8dad32537705bc87122.js"
+    integrity="sha512-V4DY41r82m48UHywwOue7hH2jCl3UCVQQuYlUg/iREWdA0wWVhk5wu1T6S47i134DwH11CD7&#43;NrTJTdwW8hxIg=="
+    id="katex-render"></script>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Projects \u0026 Tooling",
+    "name": "Closure",
+    "headline": "Closure",
+    "description": "A tool to build PHP filter chains that will wrap any file with a given prefix and suffix",
+    "inLanguage": "en",
+    "url" : "http://localhost:1313/projects/closure/",
+    "author" : {
+      "@type": "Person",
+      "name": ""
+    },
+    "copyrightYear": "2026",
+    "dateCreated": "2026-07-15T00:00:00\u002b00:00",
+    "datePublished": "2026-07-15T00:00:00\u002b00:00",
+    
+    "dateModified": "2026-07-15T00:00:00\u002b00:00",
+    
+    "keywords": ["PHP","PHP Filter Chains"],
+    
+    "mainEntityOfPage": "http://localhost:1313/projects/closure/",
+    "wordCount": "6101"
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral bf-scrollbar">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        Skip to main content
+      </a>
+    </div>
+    
+    
+      <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 z-100">
+  <div
+    id="menu-blur"
+    class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl backdrop-saturate-220 backdrop-brightness-112 dark:backdrop-saturate-180 dark:backdrop-brightness-95 bg-primary-200/80 bg-linear-60 dark:bg-primary-800/30 shadow-xl"></div>
+  <div class="relative m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32">
+    <div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
+  
+  
+    <a href="/" class="text-base font-medium truncate min-w-0 shrink">
+      Eilon Avizemer | Blog
+    </a>
+  
+  <div class="flex items-center ms-auto">
+    <div class="hidden md:flex">
+      <nav class="flex items-center gap-x-5 h-12">
+  
+    
+      
+  
+    <a
+      href="/posts/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="Blog"
+      title="Blog Posts">
+      
+      
+        <span class="text-base font-medium break-normal">
+          Blog
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="/projects/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="Projects"
+      title="Projects &amp; Tooling">
+      
+      
+        <span class="text-base font-medium break-normal">
+          Projects
+        </span>
+      
+    </a>
+  
+
+    
+  
+
+  
+
+  
+
+  
+    <button
+      id="search-button"
+      aria-label="Search"
+      class="text-base bf-icon-color-hover"
+      title="Search (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+    <div class="flex items-center">
+      <button
+        id="appearance-switcher"
+        aria-label="Switch to dark appearance"
+        type="button"
+        class="text-base bf-icon-color-hover"
+        title="Switch to dark appearance">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    </div>
+  
+</nav>
+
+
+
+    </div>
+    <div class="flex md:hidden">
+      <div class="flex items-center h-14 gap-4">
+  
+    <button
+      id="search-button-mobile"
+      aria-label="Search"
+      class="flex items-center justify-center bf-icon-color-hover"
+      title="Search (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+    <button
+      id="appearance-switcher-mobile"
+      type="button"
+      aria-label="Switch to dark appearance"
+      title="Switch to dark appearance"
+      class="flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400">
+      <div class="dark:hidden">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+      </div>
+      <div class="hidden dark:block">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+      </div>
+    </button>
+  
+
+  
+    <input type="checkbox" id="mobile-menu-toggle" autocomplete="off" class="hidden peer">
+    <label for="mobile-menu-toggle" class="flex items-center justify-center cursor-pointer bf-icon-color-hover">
+      <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+    </label>
+
+    <div
+      role="dialog"
+      aria-modal="true"
+      style="scrollbar-gutter: stable;"
+      class="fixed inset-0 z-50 invisible overflow-y-auto px-6 py-20 opacity-0 transition-[opacity,visibility] duration-300 peer-checked:visible peer-checked:opacity-100 bg-neutral-50/97 dark:bg-neutral-900/99
+      bf-scrollbar">
+      <label
+        for="mobile-menu-toggle"
+        class="fixed end-8 top-5 flex items-center justify-center z-50 h-12 w-12 cursor-pointer select-none rounded-full bf-icon-color-hover border bf-border-color bf-border-color-hover bg-neutral-50 dark:bg-neutral-900">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </label>
+      <nav class="mx-auto max-w-md space-y-6">
+        
+  
+    
+    <div class="px-2">
+      <a
+        href="/posts/"
+        aria-label="Blog"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="Blog Posts" class="text-2xl font-bold tracking-tight">
+          Blog
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/projects/"
+        aria-label="Projects"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="Projects &amp; Tooling" class="text-2xl font-bold tracking-tight">
+          Projects
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+
+        
+  
+
+        
+  
+
+      </nav>
+    </div>
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<script
+  type="text/javascript"
+  src="/js/background-blur.min.605b3b942818f0ab5a717ae446135ec46b8ee5a2ad12ae56fb90dc2a76ce30c388f9fec8bcc18db15bd47e3fa8a09d779fa12aa9c184cf614a315bc72c6c163d.js"
+  integrity="sha512-YFs7lCgY8KtacXrkRhNexGuO5aKtEq5W&#43;5DcKnbOMMOI&#43;f7IvMGNsVvUfj&#43;ooJ13n6EqqcGEz2FKMVvHLGwWPQ=="
+  data-blur-id="menu-blur"></script>
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+
+
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Closure
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2026-07-15T00:00:00&#43;00:00">15 July 2026</time><span class="px-2 text-primary-500">&middot;</span><span>6101 words</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+  <div class="place-self-center">
+    
+    
+    <div class="text-2xl sm:text-lg">
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ms-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-[140px]">
+            <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain bf-scrollbar rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-abstract">1. Abstract</a></li>
+    <li><a href="#2-introduction">2. Introduction</a>
+      <ul>
+        <li><a href="#21-the-problem">2.1. The Problem</a></li>
+        <li><a href="#22-previous-tools">2.2. Previous Tools</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-technical-background">3. Technical Background</a>
+      <ul>
+        <li><a href="#31-php-filter-chains">3.1. PHP Filter Chains</a></li>
+        <li><a href="#32-base64-encoding">3.2. Base64 encoding</a></li>
+        <li><a href="#33-prependers">3.3. Prependers</a>
+          <ul>
+            <li><a href="#331-prepending-conversion">3.3.1. Prepending Conversion</a></li>
+            <li><a href="#332-mutation-chain">3.3.2. Mutation Chain</a></li>
+            <li><a href="#333-cleanup">3.3.3. Cleanup</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4-closure">4. Closure</a>
+      <ul>
+        <li><a href="#41-glossary">4.1. Glossary</a></li>
+        <li><a href="#42-controlling-the-padding">4.2. Controlling the Padding</a>
+          <ul>
+            <li><a href="#421-initial-alignment">4.2.1. Initial Alignment</a></li>
+            <li><a href="#422-the-utf-8-magic-multiplier">4.2.2. The UTF-8 Magic Multiplier</a></li>
+            <li><a href="#423-multilayered-aligned-padding">4.2.3. Multilayered Aligned Padding</a></li>
+            <li><a href="#424-shifting-the-alignment">4.2.4. Shifting the Alignment</a></li>
+          </ul>
+        </li>
+        <li><a href="#43-transforming-the-padding">4.3. Transforming the Padding</a>
+          <ul>
+            <li><a href="#431-base-appenders">4.3.1. Base Appenders</a></li>
+            <li><a href="#432-extended-appenders">4.3.2. Extended Appenders</a></li>
+          </ul>
+        </li>
+        <li><a href="#44-putting-it-all-together">4.4. Putting It All Together</a>
+          <ul>
+            <li><a href="#441-the-preamble--postamble">4.4.1. The Preamble &amp; Postamble</a></li>
+            <li><a href="#442-preparing-the-prefix--suffix">4.4.2. Preparing the Prefix &amp; Suffix</a></li>
+            <li><a href="#443-appending-the-suffix">4.4.3. Appending the Suffix</a></li>
+            <li><a href="#444-prepending-the-prefix">4.4.4. Prepending the Prefix</a></li>
+            <li><a href="#445-the-final-chain">4.4.5. The Final Chain</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#5-comparison-to-wrapwrap">5. Comparison to wrapwrap</a></li>
+    <li><a href="#6-conclusion">6. Conclusion</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-abstract">1. Abstract</a></li>
+    <li><a href="#2-introduction">2. Introduction</a>
+      <ul>
+        <li><a href="#21-the-problem">2.1. The Problem</a></li>
+        <li><a href="#22-previous-tools">2.2. Previous Tools</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-technical-background">3. Technical Background</a>
+      <ul>
+        <li><a href="#31-php-filter-chains">3.1. PHP Filter Chains</a></li>
+        <li><a href="#32-base64-encoding">3.2. Base64 encoding</a></li>
+        <li><a href="#33-prependers">3.3. Prependers</a>
+          <ul>
+            <li><a href="#331-prepending-conversion">3.3.1. Prepending Conversion</a></li>
+            <li><a href="#332-mutation-chain">3.3.2. Mutation Chain</a></li>
+            <li><a href="#333-cleanup">3.3.3. Cleanup</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4-closure">4. Closure</a>
+      <ul>
+        <li><a href="#41-glossary">4.1. Glossary</a></li>
+        <li><a href="#42-controlling-the-padding">4.2. Controlling the Padding</a>
+          <ul>
+            <li><a href="#421-initial-alignment">4.2.1. Initial Alignment</a></li>
+            <li><a href="#422-the-utf-8-magic-multiplier">4.2.2. The UTF-8 Magic Multiplier</a></li>
+            <li><a href="#423-multilayered-aligned-padding">4.2.3. Multilayered Aligned Padding</a></li>
+            <li><a href="#424-shifting-the-alignment">4.2.4. Shifting the Alignment</a></li>
+          </ul>
+        </li>
+        <li><a href="#43-transforming-the-padding">4.3. Transforming the Padding</a>
+          <ul>
+            <li><a href="#431-base-appenders">4.3.1. Base Appenders</a></li>
+            <li><a href="#432-extended-appenders">4.3.2. Extended Appenders</a></li>
+          </ul>
+        </li>
+        <li><a href="#44-putting-it-all-together">4.4. Putting It All Together</a>
+          <ul>
+            <li><a href="#441-the-preamble--postamble">4.4.1. The Preamble &amp; Postamble</a></li>
+            <li><a href="#442-preparing-the-prefix--suffix">4.4.2. Preparing the Prefix &amp; Suffix</a></li>
+            <li><a href="#443-appending-the-suffix">4.4.3. Appending the Suffix</a></li>
+            <li><a href="#444-prepending-the-prefix">4.4.4. Prepending the Prefix</a></li>
+            <li><a href="#445-the-final-chain">4.4.5. The Final Chain</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#5-comparison-to-wrapwrap">5. Comparison to wrapwrap</a></li>
+    <li><a href="#6-conclusion">6. Conclusion</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          
+
+
+<h1 class="relative group">1. Abstract
+    <div id="1-abstract" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#1-abstract" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p><strong>closure</strong> is a new tool that leverages PHP Filter Chains to encapsulate arbitrary file contents within a chosen <strong>prefix AND suffix</strong>.</p>
+<ul>
+<li><strong>The Use Case:</strong> Bypassing strict format validations (like <code>json_decode()</code> or XML parsing) when exploiting <em>File Read</em> vulnerabilities.</li>
+<li><strong>The Breakthrough:</strong> Unlike the existing tool <a href="https://github.com/ambionics/wrapwrap"  target="_blank" rel="noreferrer">wrapwrap</a>, <strong>closure</strong> is entirely <strong>file-size agnostic</strong>.</li>
+<li><strong>The Impact:</strong> Complete decoupling of chain length from file size. You can read files of any magnitude using a single, static-sized payload.</li>
+</ul>
+<hr>
+
+<h1 class="relative group">2. Introduction
+    <div id="2-introduction" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#2-introduction" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+
+<h2 class="relative group">2.1. The Problem
+    <div id="21-the-problem" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#21-the-problem" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<img src="Images/oyon_fread.jpg" width="500" />
+<p>In my opinion, aside from actual Remote Code Execution (RCE), an Arbitrary File Read is the most powerful vulnerability you can uncover in a web application. It is the golden ticket that instantly transforms a black-box target into a white-box playground. Source code, environment variables, credentials - everything becomes accessible, drastically expanding your attack surface and paving the way for further escalation.</p>
+<p>But the joy of discovering a File Read can quickly turn into frustration when you hit a very specific, yet surprisingly common, roadblock: <strong>format constraints</strong>.</p>
+<p>Often, a vulnerability isn&rsquo;t as simple as: </p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">echo</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span></span></span></code></pre></div></div>
+<p>Instead, the application reads the file into memory and attempts to parse it before returning the output. What happens if the code passes the extracted data through functions like <code>json_decode()</code> or <code>DOMDocument::loadXML()</code>?</p>
+<p>The application expects the file to be perfectly structured JSON or XML. If you try to read <code>/etc/passwd</code> or <code>wp-config.php</code>, the parser will instantly choke on the syntax, throw an error, and stop the execution. You successfully read the file into memory, but because it didn&rsquo;t match the required format, you get absolutely nothing back.</p>
+<p>To illustrate this, let’s look at a real-world scenario I encountered. I was dealing with a piece of PHP code designed to fetch, process, and display SVG images:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// display_svg.php
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$url</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="o">??</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nv">$url</span> <span class="o">===</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">http_response_code</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;Missing url parameter&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// The Vulnerability
+</span></span></span><span class="line"><span class="cl"><span class="nv">$svgData</span> <span class="o">=</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$dom</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DOMDocument</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// The Format Restriction
+</span></span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$dom</span><span class="o">-&gt;</span><span class="na">loadXML</span><span class="p">(</span><span class="nv">$svgData</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">http_response_code</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;Invalid SVG&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$svg</span> <span class="o">=</span> <span class="nv">$dom</span><span class="o">-&gt;</span><span class="na">documentElement</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nv">$svg</span> <span class="o">&amp;&amp;</span> <span class="nv">$svg</span><span class="o">-&gt;</span><span class="na">tagName</span> <span class="o">===</span> <span class="s1">&#39;svg&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$svg</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="s1">&#39;background: black&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Content-Type: image/svg+xml&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="nv">$dom</span><span class="o">-&gt;</span><span class="na">saveXML</span><span class="p">();</span></span></span></code></pre></div></div>
+<p>Looking at this code, we can try to read any file using the <code>url</code> GET parameter, but the server then tries to parse it as an XML document. If unsuccessful, it discards the request and won&rsquo;t return the file data back to us.</p>
+<p>So, does this mean we can only read existing XML files? Well, if we can force any arbitrary file on the server to look like a valid XML file, we can read it.
+For example, wrapping the file contents with <code>&lt;x&gt;</code>, <code>&lt;/x&gt;</code> should be good enough to pass this check.</p>
+<p>But how could we do it, you may ask&hellip;</p>
+<p><strong>PHP Filter Chains</strong> !!</p>
+
+<h2 class="relative group">2.2. Previous Tools
+    <div id="22-previous-tools" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#22-previous-tools" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>There is some incredibly clever research and tooling surrounding PHP filter chains. For example, <strong>Ambionics&rsquo; <a href="https://github.com/ambionics/lightyear"  target="_blank" rel="noreferrer">lightyear</a></strong> is an awesome tool that allows you to exfiltrate arbitrary file contents under blind LFI conditions!</p>
+<p>But for the specific problem I needed to solve, these two tools were my starting point:</p>
+<ul>
+<li>
+<p><strong>Synacktiv&rsquo;s <a href="https://github.com/synacktiv/php_filter_chain_generator"  target="_blank" rel="noreferrer">php_filter_chain_generator</a>:</strong> This was the first tool to automate PHP filter chain generation. Rather than modifying existing files, it generates arbitrary content directly in memory. This allows escalating standard LFI into full RCE without ever needing to upload a file to the server.</p>
+</li>
+<li>
+<p><strong>Ambionics&rsquo; <a href="https://github.com/ambionics/wrapwrap"  target="_blank" rel="noreferrer">wrapwrap</a>:</strong> Building on Synacktiv’s work, Ambionics discovered a clever way to add arbitrary <strong>prefixes</strong> and <strong>suffixes</strong> to existing files, making it possible to bypass most format restrictions and extract arbitrary file contents.</p>
+</li>
+</ul>
+<p>So <strong>wrapwrap</strong> sounds like the exact solution to my situation right? so what&rsquo;s the problem?</p>
+<p>While wrapwrap is a great tool, it has its limitations.
+Because of how wrapwrap appends the suffix, the length of the generated filter chain scales directly with the target file&rsquo;s size. The more bytes you want to read, the larger your payload becomes.</p>
+<p>This happens because the way wrapwrap adds a suffix to your file is by adding it as a prefix and using <strong>Big Endian - Little Endian</strong> conversions to slide it further into the file contents.
+The further you slide the suffix, the more bytes you get out of the file, but also - the larger the payload size gets!</p>
+<blockquote><p>This is of course over simplified, for the full technical details it&rsquo;s best to read <a href="https://blog.lexfo.fr/wrapwrap-php-filters-suffix.html"  target="_blank" rel="noreferrer">wrapwrap&rsquo;s research article</a>, but this is everything you need to know for the sake of this article.</p>
+</blockquote><p>Since web servers strictly limit URL lengths, this scaling becomes a critical issue.
+My target server capped URLs at 150KB. Due to wrapwrap&rsquo;s scaling ratio, that massive 150KB payload allowance only let me read about 200 bytes of the file!</p>
+<p>Just for perspective this is what you get when reading 200 bytes from a <code>wp-config.php</code> file:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="o">/**</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nx">The</span> <span class="nx">base</span> <span class="nx">configuration</span> <span class="k">for</span> <span class="nx">WordPress</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nx">The</span> <span class="nx">wp</span><span class="o">-</span><span class="nx">config</span><span class="o">.</span><span class="nx">php</span> <span class="nx">creation</span> <span class="nx">script</span> <span class="nx">uses</span> <span class="k">this</span> <span class="nx">file</span> <span class="nx">during</span> <span class="nx">the</span> <span class="nx">installation</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="nx">You</span> <span class="nx">don</span><span class="err">&#39;</span><span class="nx">t</span> <span class="nx">have</span> <span class="nx">to</span> <span class="k">use</span> <span class="nx">the</span> <span class="nx">website</span><span class="p">,</span> <span class="nx">you</span> <span class="nx">can</span> <span class="nx">copy</span> <span class="k">this</span> <span class="nx">file</span> <span class="nx">to</span> <span class="s2">&#34;wp-co
+</span></span></span></code></pre></div></div>
+<p>And this is what you can get from <code>/etc/passwd</code>:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">root:x:0:0:root:/root:/bin/bash
+</span></span><span class="line"><span class="cl">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+</span></span><span class="line"><span class="cl">bin:x:2:2:bin:/bin:/usr/sbin/nologin
+</span></span><span class="line"><span class="cl">sys:x:3:3:sys:/dev:/usr/sbin/nologin
+</span></span><span class="line"><span class="cl">sync:x:4:65534:sync:/bin:/bin/sync
+</span></span><span class="line"><span class="cl">games:x:5:6</span></span></code></pre></div></div>
+<p>This made my file read vulnerability pretty useless.
+So I had to look for a better way&hellip;</p>
+<hr>
+
+<h1 class="relative group">3. Technical Background
+    <div id="3-technical-background" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#3-technical-background" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+
+<h2 class="relative group">3.1. PHP Filter Chains
+    <div id="31-php-filter-chains" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#31-php-filter-chains" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>By default, PHP functions like <code>file_get_contents()</code> or <code>fopen()</code> read local files by simply taking a standard file path.
+However, PHP optionally allows developers to use <strong>wrappers</strong> to change how these functions access data. For example, using the <code>http://</code> wrapper fetches a remote web page, while the <code>zip://</code> wrapper can read a file nested inside an archive.</p>
+<p>Among these built-in options is the <code>php://</code> scheme, which provides access to various internal I/O features. The specific component relevant to this technique is the <code>php://filter</code> meta-wrapper.</p>
+<p>Instead of just reading a file directly, <code>php://filter</code> intercepts the file&rsquo;s data stream and allows you to pass it through a series of transformations <strong>before</strong> the application receives the data.</p>
+<p>The syntax allows you to chain as many filters as needed sequentially. The data passes through each filter one by one:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">php://filter/&lt;FILTER_1&gt;/&lt;FILTER_2&gt;/.../resource=&lt;TARGET_FILE&gt;</span></span></code></pre></div></div>
+<p>PHP provides a specific set of available default filters, divided into four main categories:</p>
+<ul>
+<li><strong>String Filters:</strong> Basic text manipulations like <code>string.rot13</code>, <code>string.toupper</code>, <code>string.tolower</code>, and the deprecated <code>string.strip_tags</code>.</li>
+<li><strong>Conversion Filters:</strong> This category includes <code>convert.base64-encode</code> / <code>convert.base64-decode</code>, <code>convert.quoted-printable-encode</code> / <code>convert.quoted-printable-decode</code>, and the highly versatile <code>convert.iconv.*</code> filters, which translate data between different character encodings.</li>
+<li><strong>Compression Filters:</strong> Used to compress or extract streams on the fly (<code>zlib.deflate</code> / <code>zlib.inflate</code>, <code>bzip2.compress</code> / <code>bzip2.decompress</code>).</li>
+<li><strong>Encryption Filters (Deprecated):</strong> The old <code>mcrypt.*</code> and <code>mdecrypt.*</code> modules.</li>
+</ul>
+<p>Individually, these filters were designed for standard tasks, like encoding an image to Base64 or fixing character set issues. However, when chained together in a highly specific order, they can be used to manipulate data in complex, unintended ways.</p>
+<p>This concept is known as a <strong>PHP Filter Chain</strong>. By routing the target file through a carefully calculated sequence of these default filters, <strong>closure</strong> eventually constructs arbitrary prefixes and suffixes entirely in memory.</p>
+
+<h2 class="relative group">3.2. Base64 encoding
+    <div id="32-base64-encoding" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#32-base64-encoding" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>The backbone of <strong>closure</strong> and of PHP filter chains in general is Base64.
+To understand how <strong>closure</strong> uses it, we first need to refresh how it works.</p>
+<p>Base64 utilizes an alphabet of 64 characters (and one padding character: <code>=</code>), meaning each character represents exactly <strong>6 bits</strong> of data. Standard bytes, however, are <strong>8 bits</strong>.</p>
+<p>Because of this mismatch, one Base64 character cannot cleanly represent one raw byte. If we use two Base64 characters (12 bits) to represent one byte (8 bits), we are left with 4 unused bits. The only time the bits align perfectly without any waste is when we encode <strong>3 raw bytes (24 bits)</strong> into <strong>4 Base64 characters (24 bits)</strong>.</p>
+<p>This alignment is summed up in this diagram:</p>
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt=""
+    src="/projects/closure/Images/base64_dgram.svg"
+    ></figure>
+
+<h2 class="relative group">3.3. Prependers
+    <div id="33-prependers" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#33-prependers" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<blockquote><p><strong>Disclaimer</strong>
+This section will not cover the foundational research behind prepending using PHP filter chains from scratch. I will only summarize the parts relevant to this tool. For a deep dive into the core mechanics, you can read <a href="https://www.synacktiv.com/publications/php-filters-chain-what-is-it-and-how-to-use-it"  target="_blank" rel="noreferrer">Synacktiv&rsquo;s excellent research article</a>.</p>
+</blockquote><p>Prepending a character using filter chains requires following these 3 steps:</p>
+<ol>
+<li>
+<p><strong>Prepending Conversion</strong> - use an <code>iconv</code> conversion that adds known constant bytes to the start of the data</p>
+</li>
+<li>
+<p><strong>Mutation Chain</strong> - use a filter chain that converts your prepended bytes from the last step to a byte you want to prepend, while keeping the other data mostly the same.</p>
+</li>
+<li>
+<p><strong>Cleanup</strong> - remove any garbage that is left over from the last 2 steps.</p>
+</li>
+</ol>
+<p>We will dive in into each step, but before we begin we first need to <strong>Base64 encode</strong> our file.</p>
+<p>Why? Because generating any raw byte (<code>\x00</code> -<code> \xff</code>) via filter chains is incredibly difficult. However, if we Base64 encode the file first, our requirement shrinks: we only need to figure out how to prepend the 64 characters used in Base64 (<code>a-z</code>, <code>A-Z</code>, <code>0-9</code>, <code>+/</code>). Once we successfully prepend our desired Base64 characters, we simply Base64 decode the entire payload at the end to retrieve our arbitrary raw bytes.</p>
+<p>Encoding the file with Base64 will also later allow us to <strong>cleanup</strong> and find <strong>resilient prependers</strong>, as will be explained shortly.</p>
+
+<h3 class="relative group">3.3.1. Prepending Conversion
+    <div id="331-prepending-conversion" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#331-prepending-conversion" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>A <strong>Prepending Conversion</strong> relies on specific <code>iconv</code> PHP filters that naturally add known data to the beginning of a file during character encoding conversion.</p>
+<p>The reason certain conversions prepend data usually falls into one of two categories:</p>
+<ul>
+<li>
+<p><strong>Stateful Encodings (Escape Sequences):</strong> Some encodings add an escape sequence to signal a switch in the character set.</p>
+<ul>
+<li>For example: <code>convert.iconv.UTF8.CSISO2022KR</code> prepends <code>\x1b$)C</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Multibyte Encodings (Byte Order Marks):</strong> Some encodings prepend a BOM to indicate endianness.</p>
+<ul>
+<li>For example: <code>convert.iconv.L1.UTF16</code> prepends <code>\xff\xfe</code>.</li>
+</ul>
+</li>
+</ul>
+
+<h3 class="relative group">3.3.2. Mutation Chain
+    <div id="332-mutation-chain" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#332-mutation-chain" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Once we have prepended these initial bytes (like a BOM), we need to mutate them into our target Base64 character.
+We do this by passing the data through a chain of <code>iconv</code> conversions.
+Fortunately we don&rsquo;t need to find these magic chains, they were already brute-forced for us.</p>
+<p>This is what allows us to take a highly limited set of prepending conversions and twist them into any Base64 character we need.</p>
+<p>For example, let&rsquo;s say we want to prepend the character <code>c</code>:<br>
+First, we use <code>convert.iconv.L4.UTF32</code> (our Prepending Conversion) to prepend the BOM <code>\xff\xfe</code>:</p>
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt=""
+    src="Images/Pasted%20image%2020260613154814.png"
+    ></figure>
+<p>Then, we pass that result through <code>convert.iconv.CP1250.UCS-2</code>, our <strong>Mutation Chain</strong>. This mutates the BOM into <code>\xd9\x02c\x01</code>. Notice that the character <code>c</code> is now safely sitting inside the prepended data!</p>
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt=""
+    src="Images/Pasted%20image%2020260613155238.png"
+    ></figure>
+<p>In this specific example, the <strong>Mutation Chain</strong> only required one filter, but of course chains can be as long as necessary to mutate the bytes into the exact target character.</p>
+
+<h3 class="relative group">3.3.3. Cleanup
+    <div id="333-cleanup" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#333-cleanup" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>You might have noticed a problem in the previous example: we successfully prepended the character <code>c</code>, but we also prepended several garbage bytes (<code>\xd9</code>, <code>\x02</code>, <code>\x01</code>).
+We&rsquo;ve also apparently spread the Coronavirus again because every original letter now keeps a distance of about 2 meters of <code>\x00</code> bytes from its neighbors&hellip;
+So what do we do now?</p>
+<p>Fortunately, PHP&rsquo;s <code>convert.base64-decode</code> filter is incredibly forgiving. When it decodes data, <strong>it completely ignores any character that is not part of the standard Base64 alphabet.</strong></p>
+<p>This means that after generating our prepended character alongside the garbage bytes, we can simply run the payload through <code>convert.base64-decode</code> followed immediately by <code>convert.base64-encode</code>, to drop the invalid garbage bytes, leaving only our valid Base64 character:</p>
+<ul>
+<li>
+<p>Before:
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt=""
+    src="Images/Pasted%20image%2020260613164923.png"
+    ></figure>
+</p>
+</li>
+<li>
+<p>After:
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt=""
+    src="Images/Pasted%20image%2020260613164900.png"
+    ></figure>
+</p>
+</li>
+</ul>
+<p><strong>There&rsquo;s always a catch&hellip;</strong>
+There is one caveat. Because Base64 operates in strict chunks of 4 characters (as discussed in section 3.2), the decode/encode cleanup process can sometimes truncate a valid character from the end of our data if there is no padding at the end.</p>
+<p>To solve this problem, we can intentionally add our own &ldquo;sacrificial&rdquo; garbage bytes to the very end of the content. When the cleanup phase chops off trailing characters, it will only destroy our sacrificial bytes, fully protecting the actual file data.</p>
+<hr>
+
+<h1 class="relative group">4. Closure
+    <div id="4-closure" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#4-closure" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<img src="Images/Pasted%20image%2020260615212631.png" width="400" />
+<p>At its core, <strong>closure</strong> is designed to append a <strong>prefix</strong> and a <strong>suffix</strong> to a file&rsquo;s contents without heavily inflating the size of the filter chain.</p>
+<p>To pull this off, it takes advantage of the only currently known PHP filter capable of appending new bytes to the end of the data: <strong>Base64 Encode</strong>.</p>
+<p>To append a suffix, <strong>closure</strong> relies on the following process:</p>
+<ol>
+<li><strong>Align the data:</strong> Prepare the input so we can predict and control exactly how much padding will be added.</li>
+<li><strong>Base64 Encode (Layer 1):</strong> Generate the base layer of Base64 data, where we can append the Base64 characters that will eventually decode into our suffix.</li>
+<li><strong>Append Character (Repeated for each suffix character):</strong>
+<ol>
+<li><strong>Align for padding:</strong> Shift the data so the next Base64 encode yields the exact padding we need (<code>=</code> or <code>==</code>).</li>
+<li><strong>Apply Reverse Conversion Chain:</strong> Pre-process the stream by applying the reverse of the conversion chain that will be used in step (3.6).</li>
+<li><strong>Base64 Encode (Layer 2):</strong> Trigger the encoder to generate the <code>=</code> padding characters at the end of the stream.</li>
+<li><strong>Transform the padding:</strong> Transform those newly added padding characters into valid Base64 characters that will decode to known new bytes.</li>
+<li><strong>Base64 Decode (Layer 2):</strong> Decode this secondary layer to append the new known bytes to our layer 1 Base64 stream.</li>
+<li><strong>Apply Conversion Chain:</strong> Convert the new bytes into our desired target character, while simultaneously restoring the rest of the original content back to normal (undoing step 3.2).</li>
+</ol>
+</li>
+<li><strong>Base64 Decode (Layer 1):</strong> Decode the foundational layer, which now successfully includes our fully constructed suffix.</li>
+<li><strong>Apply Postamble Chain:</strong> Reverse the initial alignment process (from Step 1) to restore the original file contents cleanly.</li>
+</ol>
+<p>We will dive into each of the concepts making each step of <strong>closure</strong>&rsquo;s process possible in more detail.</p>
+
+<h2 class="relative group">4.1. Glossary
+    <div id="41-glossary" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#41-glossary" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Before we dive in, let&rsquo;s define some frequently used terms:</p>
+<ul>
+<li><code>B64E</code> - Base64 encode, the php filter is <code>convert.base64-encode</code></li>
+<li><code>B64D</code> - Base64 decode, the php filter is <code>convert.base64-decode</code></li>
+<li><code>QPE</code> - Quoted Printable Encode, the php filter is <code>convert.quoted-printable-encode</code></li>
+<li><code>QPD</code> - Quoted Printable Decode, the php filter is <code>convert.quoted-printable-decode</code></li>
+<li><code>REMOVE_EQUAL</code> / <code>RM_EQ</code> - The php filter <code>convert.iconv.L1.UTF7</code></li>
+</ul>
+
+<h2 class="relative group">4.2. Controlling the Padding
+    <div id="42-controlling-the-padding" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#42-controlling-the-padding" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">4.2.1. Initial Alignment
+    <div id="421-initial-alignment" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#421-initial-alignment" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>As established in Section 3.2, Base64 encoding processes data in 3-byte chunks. This means the number of padding characters added at the end is determined only by how many bytes are left in the final group:</p>
+<ul>
+<li>1 remaining byte = 2 padding characters (<code>==</code>)</li>
+<li>2 remaining bytes = 1 padding character (<code>=</code>)</li>
+<li>3 remaining bytes = 0 padding characters</li>
+</ul>
+<p>We can express this behavior with a simple formula:
+</p>
+$$
+\text{padding\_count} = (-\text{ data\_size}) \bmod 3
+$$<blockquote><p><strong>NOTE:</strong> While a standard modulo (\(\text{data\_size} \bmod 3\)) would give us the <em>remainder</em>, adding the negative sign calculate the <em>shortfall</em>.
+For example, if we have 1 leftover byte, \((-1) \bmod 3 = 2\), perfectly matching the required padding.</p>
+</blockquote><p>In modulo 3 arithmetic, any \(\text{data\_size}\) that is an exact multiple of 3 is equivalent to zero (\(\text{data\_size} \equiv_{3} 0\)).</p>
+<p>This is crucial because from the perspective of the padding calculation, a data size that is a multiple of 3 is mathematically identical to having <strong>no data at all</strong>.</p>
+<p>If we can force the \(\text{data\_size}\) to become a multiple of 3, it allows us to effectively ignore all prior data. Any further permutations or data we append from this point forward will calculate padding exactly as if the original file didn&rsquo;t exist.</p>
+
+<h3 class="relative group">4.2.2. The UTF-8 Magic Multiplier
+    <div id="422-the-utf-8-magic-multiplier" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#422-the-utf-8-magic-multiplier" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Most standard PHP encoding filters can only scale data by even multipliers. For instance, converting to UTF-16 or UCS-2 multiplies the size by \(2\), while UTF-32 or UCS-4 multiplies it by \(4\).</p>
+<p>To force the \(\text{data\_size}\) to a multiple of \(3\), <strong>closure</strong> exploits the variable-length nature of UTF-8.</p>
+<p>Unlike fixed-length encodings, UTF-8 uses 1, 2, 3, or 4 bytes per character depending on the character&rsquo;s exact Unicode value. Specifically, any character that falls within the Unicode range of <code>U+0800</code>-<code>U+FFFF</code> is strictly encoded as <strong>exactly 3 bytes</strong>.</p>
+<p>By mutating the data so that every character falls strictly within this range, converting the data to UTF-8 guarantees an expansion into a multiple of \(3\).
+To push the data into this exact Unicode pocket, <strong>closure</strong> uses these three steps:</p>
+<ol>
+<li>
+<p><strong>Base64 Encoding:</strong><br>
+This serves two vital mathematical purposes. First, the inherent padding of Base64 ensures the total byte count is perfectly divisible by \(4\). Second, it restricts the entire file&rsquo;s character set to just <code>a-zA-Z0-9+/=</code>. In hexadecimal, the lowest possible byte value is 0x2b (+) and the highest is 0x7a (z).</p>
+</li>
+<li>
+<p><strong>Reading as UTF-16:</strong><br>
+Next, the chain instructs PHP to interpret this new Base64 string as UTF-16. Because the data is perfectly divisible by \(4\), PHP cleanly reads the bytes in pairs. Each 2-byte pair forms a single UTF-16 character. Given the strict Base64 hex limits established in the first step, the lowest possible character created is <code>U+2B2B</code> (<code>++</code>) and the highest is <code>U+7A7A</code> (<code>zz</code>). Every single pair from the Base64 string now falls perfectly inside the target <code>U+0800</code>-<code>U+FFFF</code> range.</p>
+</li>
+<li>
+<p><strong>Converting to UTF-8:</strong><br>
+Finally, the chain converts this data to UTF-8. Because every character sits in that specific Unicode range, every 2-byte pair expands into exactly 3 bytes.</p>
+</li>
+</ol>
+<blockquote><p><strong>Note:</strong> Steps (2) and (3) happen in the same PHP filter - <code>convert.iconv.UTF-16.UTF-8</code></p>
+</blockquote><p>For the visual learners, that process is summed up in this diagram:
+<img src="Images/mult3.svg" width="600" /></p>
+<p>Through this sequence, we align the \(\text{data\_size}\) to a multiple of \(4\) (by Base64 encoding it), and then we convert every 2 bytes of that output into 3 bytes, effectively multiplying our data by \(\frac{3}{2}\).<br>
+Putting it all together, our \(\text{data\_size}\) is now aligned to a multiple of \(6\), which inherently makes it a multiple of \(3\).</p>
+<p><strong>We successfully aligned any given data into a multiple of 3 size!</strong></p>
+<blockquote><p><strong>NOTE:</strong> From now on, the specific operation of reading as UTF-16 and converting to UTF-8 (<code>convert.iconv.UTF-16.UTF-8</code>) will be referred to as <strong>MULT_3</strong>.</p>
+</blockquote>
+<h3 class="relative group">4.2.3. Multilayered Aligned Padding
+    <div id="423-multilayered-aligned-padding" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#423-multilayered-aligned-padding" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>To achieve full control over an appended suffix, one layer of Base64 is simply not enough. To construct the full payload, <strong>closure</strong> requires 2 layers.</p>
+<p>But how can we control and align the padding of a second Base64 layer?</p>
+<p>Because Base64 takes 3 input bytes and converts them into 4, we can think of it as multiplying our \(\text{data\_size}\) by \(\frac{4}{3}\) (or more accurately: \(\lceil\frac{4}{3}\cdot\text{data\_size}\rceil\) ).
+If we start with a \(\text{data\_size}\) that is a multiple of \(3\) (\(3n\)) and Base64 encode it once, we immediately lose our alignment for the next layer:
+</p>
+$$
+\frac{4}{3} \cdot \text{data\_size}  = \frac{4}{3} \cdot 3n = 4 n
+$$<p>
+Since \(4n\) is no longer guaranteed to be a multiple of \(3\), the second layer will suffer from unpredictable padding. To ensure the data remains perfectly aligned after the first Base64 pass, our starting \(\text{data\_size}\) must be a multiple of \(3^2 = 9\) !</p>
+<p>Fortunately, we can achieve this by simply chaining <strong>MULT_3</strong> operations. As explained <a href="https://design215.com/toolbox/utf8-3byte-characters.php"  target="_blank" rel="noreferrer">here</a>, the individual bytes produced by a 3-byte UTF-8 character are strictly limited to the following hex ranges:</p>
+<ul>
+<li>Byte 1 = \xE0 to \xEF</li>
+<li>Byte 2 = \x80 to \xBF</li>
+<li>Byte 3 = \x80 to \xBF</li>
+</ul>
+<p>If we take any pair of these resulting bytes and interpret them as UTF-16, the lowest possible value is <code>U+8080</code> and the highest is <code>U+EFBF</code>. Both of these values still fall perfectly within our magical Unicode range of <code>U+0800</code> to <code>U+FFFF</code>.</p>
+<p>This means we can safely pass the data through <strong>MULT_3</strong> a second time.</p>
+<p>Recall that after the first pass (Base64 Encode → MULT_3), our \(\text{data\_size}\) is a multiple of \(6\) (\(6n\)). When we apply <strong>MULT_3</strong> again, that size is multiplied by \(\frac{3}{2}\), bringing it to a perfect multiple of \(9\) :
+</p>
+$$
+\frac{3}{2}\cdot\text{data\_size} = \frac{3}{2}\cdot6n = 9n
+$$<p>
+To sum it all up, aligning our \(\text{data\_size}\) to a multiple of \(9\) requires three simple steps:</p>
+<ol>
+<li>Base64 Encode</li>
+<li>MULT_3</li>
+<li>MULT_3</li>
+</ol>
+<p>Now that our starting size is a multiple of \(9\) (\(9n\)), we can safely apply the two Base64 layers:</p>
+<p>First, passing the data through the initial Base64 layer multiplies its size by \(\frac{4}{3}\). This transforms our \(9\) bytes into exactly \(12n\) bytes.</p>
+<p>Then, this \(12n\) byte output flows into the second Base64 layer. Since \(12n\) is inherently a multiple of \(3\), it provides the perfect alignment needed for the final encoding, resulting in exactly \(0\) padding.</p>
+
+<h3 class="relative group">4.2.4. Shifting the Alignment
+    <div id="424-shifting-the-alignment" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#424-shifting-the-alignment" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>We aligned our data to generate exactly 0 padding. But to append new bytes using Base64, we actually need padding characters to act as a blank canvas. We need a reliable way to break that perfect 3-byte alignment on command.</p>
+<p>To shift from 0 padding to any padding length (0, 1, or 2 characters), we inject bytes at the front of the stream. The ideal PHP filter for this needs three things: a constant byte size, easy cleanup, and rock-solid reliability no matter what the stream contains.</p>
+<p>To pull this off <strong>closure</strong> uses a combo of two PHP filters, aliased as: <strong>INFLATE_2</strong> and <strong>QPE</strong>.</p>
+<p><strong>The Kick-Starter: INFLATE_2</strong>
+<strong>closure</strong> gets the initial byte injection using <code>convert.iconv.UTF-16.UCS-2</code>, which we will call <strong>INFLATE_2</strong>.</p>
+<p>This filter hits the first two requirements perfectly. It always prepends exactly two constant bytes: <code>\xff\xfe</code>. Since these are not valid Base64 characters, they are harmlessly stripped away the second we run a Base64 decode during cleanup.</p>
+<p>But INFLATE_2 is brittle. It crashes the entire filter chain if:</p>
+<ul>
+<li>The \(\text{data\_size}\)  isn&rsquo;t a perfect multiple of 2.</li>
+<li>The stream contains bytes in the UTF-16 Surrogate Range (allocated 4 byte sequences used to represent some Unicode characters). If a byte pair hits this range but the next pair doesn&rsquo;t align, the conversion fails.</li>
+</ul>
+<p>If we keep using INFLATE_2 while appending arbitrary data, we will eventually hit a fatal crash. To keep things stable, <strong>closure</strong> uses INFLATE_2 strictly as a one-time kick-starter. We apply it only at the very beginning of the cycle when the stream is pure Base64. This guarantees an even byte length and completely dodges the Surrogate Range.</p>
+<p><strong>The Durable Engine: QPE</strong>
+To shift padding safely after that initial kick, <strong>closure</strong> tags in <code>convert.quoted-printable-encode</code> (<strong>QPE</strong>) and its counterpart <code>convert.quoted-printable-decode</code> (<strong>QPD</strong>).</p>
+<blockquote><p><strong>Quoted-Printable Encoding (QPE)</strong> escapes non-printable ASCII characters into an equals sign followed by their hex value. For example, <code>\xff</code> becomes <code>=FF</code>.<br>
+Since the equals sign (<code>=</code>) is the escape character, existing equals signs also get escaped, becoming <code>=3D</code>.</p>
+</blockquote><p>With QPE, <strong>closure</strong> achieves sustainable padding control through predictable byte expansion. <strong>closure</strong> tracks exactly how many non-printable bytes exist in our stream at each moment. This means we can predict exactly how a QPE operation will multiply those bytes, changing the total \(\text{data\_size}\), as well as the padding.</p>
+<p>To understand how this works, its best to look at an example. Assume we start with the aligned, 12-byte Base64 string <code>SGVsbG9HdXlz</code> (since \(12 \bmod 3 = 0\), this yields <strong>0 padding characters</strong>).
+Say we need the second layer of Base64 encode to result in 2 padding characters (<code>==</code>).</p>
+<ol>
+<li><strong>The Kick-Start (INFLATE_2):</strong><br>
+We apply INFLATE_2, prepending <code>\xff\xfe</code>.
+<ul>
+<li><strong>Stream:</strong> <code>\xff\xfeSGVsbG9HdXlz</code></li>
+<li><strong>Size:</strong> 14 bytes</li>
+<li><strong>Math:</strong> \(14 \bmod 3 = 2\)</li>
+<li><strong>Result:</strong> Base64 encoding this gives exactly <strong>1 padding character</strong> (<code>//5TR1ZzYkc5SGRYbHo=</code>).</li>
+</ul>
+</li>
+<li><strong>The First Shift (QPE No. 1):</strong><br>
+Instead of encoding to Base64 right away, we pass the data through QPE. The two non-printable bytes <code>\xff\xfe</code> expand into six printable bytes: <code>=FF=FE</code>.
+<ul>
+<li><strong>Stream:</strong> <code>=FF=FESGVsbG9HdXlz</code></li>
+<li><strong>Size:</strong> 18 bytes</li>
+<li><strong>Math:</strong> \(18 \bmod 3 = 0\)</li>
+<li><strong>Result:</strong> Base64 encoding this drops the padding back to <strong>0 padding characters</strong> (<code>PUZGPUZFU0dWc2JHOUhkWGx6</code>).</li>
+</ul>
+</li>
+<li><strong>The Second Shift (QPE No. 2):</strong><br>
+We run QPE a second time. The existing <code>=</code> characters are escaped, turning <code>=FF=FE</code> into <code>=3DFF=3DFE</code>.
+<ul>
+<li><strong>Stream:</strong> <code>=3DFF=3DFESGVsbG9HdXlz</code></li>
+<li><strong>Size:</strong> 22 bytes</li>
+<li><strong>Math:</strong> \(22 \bmod 3 = 1\)</li>
+<li><strong>Result:</strong> Base64 encoding this shifts the padding to exactly <strong>2 padding characters</strong> (<code>PTNERkY9M0RGRVNHVnNiRzlIZFhseg==</code>).</li>
+</ul>
+</li>
+</ol>
+<p>This example is also summed up in this diagram:</p>
+<img src="Images/qpe_shifts.svg" width="600" />
+<p>By stacking QPE operations on top of that initial INFLATE_2 kick-start, <strong>closure</strong> can cycle through byte alignments. This lets us command the Base64 encoder to spit out exactly 0, 1 or 2 padding characters whenever we need them.</p>
+
+<h2 class="relative group">4.3. Transforming the Padding
+    <div id="43-transforming-the-padding" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#43-transforming-the-padding" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Now that we can reliably control the exact amount of Base64 padding that is being generated, the next step is transforming those useless <code>=</code> characters into actual, useful Base64 characters!</p>
+
+<h3 class="relative group">4.3.1. Base Appenders
+    <div id="431-base-appenders" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#431-base-appenders" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Base Appenders are the foundational filter chains <strong>closure</strong> uses to convert raw padding (<code>=</code> or <code>==</code>) into useful Base64 characters.</p>
+<p>To pull this off without corrupting the rest of our payload, we need PHP conversions that mutate the <code>=</code> character while leaving the standard Base64 alphabet (<code>a-zA-Z0-9+/</code>) completely untouched.</p>
+<p>After fuzzing all possible filters, I found only two conversions that fit this strict requirement:</p>
+<ul>
+<li><strong>QPE:</strong> As we already know, this converts <code>=</code> into <code>=3D</code>.</li>
+<li><strong>UTF-7:</strong> In UTF-7, all alphanumeric characters remain the same. The only relevant changes are: <code>+</code> becomes <code>+-</code>, and <code>=</code> becomes <code>+AD0-</code>. Since the <code>-</code> character is not a valid Base64 character, the <code>convert.base64-decode</code> filter will naturally ignore and drop it later during cleanup. This means the <code>+</code> character effectively remains untouched! We call the conversion to UTF-7: <strong>REMOVE_EQUAL</strong>.</li>
+</ul>
+<p>Both of these conversions successfully replace the <code>=</code> padding with valid Base64 characters!</p>
+<p>With these two filters, we can fuzz for permutations of QPE and REMOVE_EQUAL that output data matching two critical conditions:</p>
+<ol>
+<li><strong>Single Character Survival:</strong> It contains exactly one valid Base64 character surrounded by garbage. (We don&rsquo;t care about the garbage, since the Base64 decode cleanup phase will naturally strip it away).</li>
+<li><strong>No Stray Padding:</strong> It does not contain any leftover <code>=</code> characters. (An out-of-place <code>=</code> will instantly crash the Base64 decode operation).</li>
+</ol>
+<p>Running this brute-force gives us our very first Base Appender for the character <code>M</code>! By applying a <code>QPE</code> followed by <code>REMOVE_EQUAL</code> to a 2-padded stream and then Base64 decoding the result, we successfully append the <code>M</code> character to our payload.</p>
+<img src="Images/base_appender_pipeline.svg" width="700" />
+<p>Having one Base Appender is a great start, but we need more to construct a full suffix. To unlock a wider variety of characters, <strong>closure</strong> leverages two clever tricks:</p>
+<p><strong>The ROT13 Trick</strong>
+The <code>string.rot13</code> filter is highly useful here because it is perfectly reversible and doesn&rsquo;t affect the \(\text{data\_size}\). By wrapping different parts of our append operations inside ROT13 filters, we can change some alphabet characters into different ones while keeping the rest of the stream the same.
+The concept is simple: apply a ROT13 filter, execute some part of the appending chain, and then apply a ROT13 filter again. The double ROT13 operation perfectly restores our original payload data back to normal, but any character that was generated <em>between</em> the two ROT13 filters gets rotated exactly <strong>once</strong>. For instance, wrapping the entire <code>M</code> appender in ROT13 shifts the <code>M</code> into a <code>Z</code>! We can also place the ROT13 wrap deeper inside the chain (e.g., wrapping only the <code>REMOVE_EQUAL</code> step) to yield entirely different characters, like <code>5</code>.</p>
+<p><img src="Images/rot13_shift.svg" width="600" />`</p>
+<p><strong>The QPD Trick</strong>
+While fuzzing permutations of QPE, REMOVE_EQUAL, and ROT13, the output sometimes naturally produces the exact sequence <code>=7C</code> right before a valid Base64 character.
+If we pass this stream through a QPD filter (<code>convert.quoted-printable-decode</code>), that specific <code>=7C</code> sequence translates into the raw byte <code>|</code>.</p>
+<p>Because <code>|</code> is an invalid Base64 character, it gets ignored and stripped out during the final Base64 decode cleanup. By translating those three specific characters (<code>=</code>, <code>7</code>, <code>C</code>) into a single garbage byte, QPD effectively swallows them and removes them from the stream entirely. This destroys the rogue <code>=</code> that would have otherwise crashed the decoding process, leaving behind only the valid Base64 character that appeared immediately after it.</p>
+<p>However, there is a catch. We cannot just throw a QPD filter into the chain, as it would destroy the padding control method we established earlier (see Section 4.2.4). To safely apply QPD, we must strictly wrap the appending chain in matching layers of QPE and QPD.
+Specifically, <strong>closure</strong> uses exactly 3 layers of QPE at the start, and 3 layers of QPD at the end. Why exactly 3? Because the byte expansion caused by 3 consecutive QPE operations results in a net byte increase that is perfectly divisible by 3. Because the added data length is a multiple of 3, the final Base64 padding remains identical to what it would be without the wrap!</p>
+<p>Using this QPE/QPD wrap, we can exploit the <code>=7C</code> destruction trick, handing us 4 more Base Appenders for the characters <code>t</code>, <code>g</code>, <code>p</code>, and <code>c</code>.</p>
+
+<h3 class="relative group">4.3.2. Extended Appenders
+    <div id="432-extended-appenders" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#432-extended-appenders" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Now we can append 7 different Base64 characters to our Base64 data. It is more than nothing, but it is not the 64 characters that we need.
+To expand on this, <strong>closure</strong> uses an idea similar to ROT13.</p>
+<p>ROT13 was great because given an appender, it allowed us to transform it into a completely different one, <strong>expanding on it</strong>.
+We can do the same thing we did with ROT13, just with normal iconv conversions!</p>
+<p>Think about it, every iconv conversion is reversible, all you need to do is flip the conversion positions!
+So if we can find conversions that:</p>
+<ol>
+<li>Don&rsquo;t affect the \(\text{data\_size}\), conserving the expected padding</li>
+<li>Are resilient and don&rsquo;t fail for given quoted-printable characters (In the reverse version too)</li>
+<li>Produce one, and only one, Base64 character without any padding characters.</li>
+</ol>
+<p>We can get more appenders!</p>
+<p>For example, the conversions <code>1026 -&gt; 8859_9</code> and <code>1026 -&gt; 437</code> chained together can turn <code>t</code> into <code>H</code>:
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt=""
+    src="Images/Pasted%20image%2020260708235602.png"
+    ></figure>
+</p>
+<p>Using this conversion, we can extend our found <code>t</code> appender into an <code>H</code> appender with a few extra filters:
+<img src="Images/extended_appender.svg" width="700" /></p>
+<p>Making and running some brute-force scripts and tinkering with this manually, eventually allowed me to find a conversion for each Base64 character.
+We now have everything we need!</p>
+
+<h2 class="relative group">4.4. Putting It All Together
+    <div id="44-putting-it-all-together" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#44-putting-it-all-together" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Now we have all the individual puzzle pieces:</p>
+<ul>
+<li>forcing alignments</li>
+<li>controlling padding</li>
+<li>appending Base64 characters</li>
+<li>prepending Base64 characters</li>
+</ul>
+<p>it is time to put them all together into our final filter chain.</p>
+<p>Here is exactly how <strong>closure</strong> pulls this off.</p>
+
+<h3 class="relative group">4.4.1. The Preamble &amp; Postamble
+    <div id="441-the-preamble--postamble" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#441-the-preamble--postamble" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>As we saw in Section 4.2.3, we need to force every input file into a \(\text{data\_size}\) that is a perfect multiple of \(9\) before we can safely play with its padding.</p>
+<p>To achieve this, <strong>closure</strong> begins the filter chain by passing the file through a filter sequence called the <strong>Preamble</strong>:</p>
+<ol>
+<li>B64E</li>
+<li>MULT_3</li>
+<li>MULT_3</li>
+<li>B64E</li>
+</ol>
+<p>Now that the file is perfectly aligned, we can add our prefix and suffix.
+Once that is done, we need to reverse the <strong>Preamble</strong> process to restore the original file.
+<strong>closure</strong> achieves this by placing a filter sequence called the <strong>Postamble</strong> at the very end of the filter chain:</p>
+<ol>
+<li>B64D</li>
+<li>ANTI_MULT_3 (The exact reverse of the MULT_3 conversions)</li>
+<li>ANTI_MULT_3</li>
+</ol>
+<p>You might notice something missing here. The Preamble started with a B64E, so shouldn&rsquo;t the Postamble end with a final B64D?</p>
+<p><strong>closure</strong> intentionally drops this final decode for two main reasons:</p>
+<ol>
+<li>
+<p><strong>Format Resilience:</strong> Wrapping the extracted file as a Base64 string is almost always better. XML and JSON parsers are far less likely to choke on a clean Base64 string nested inside a valid tag than they are on raw, unencoded file bytes (which might contain rogue quotes or brackets that break the format again).</p>
+</li>
+<li>
+<p><strong>First Layer Padding:</strong> The very first Base64 encode in our <strong>Preamble</strong> is <strong>not</strong> aligned. This means the original file could potentially generate padding characters (=) when encoded. If we append our suffix and then fully decode everything, those original padding characters end up sitting right in the middle of our data (e.g., <code>SGVsbG8=PC94Pg</code>). The second PHP tries to Base64 decode a string with these padding characters out of place, it instantly fails - making our filter chain unreliable.</p>
+</li>
+</ol>
+<p>Leaving the final output safely Base64-encoded dodges both of these problems.</p>
+
+<h3 class="relative group">4.4.2. Preparing the Prefix &amp; Suffix
+    <div id="442-preparing-the-prefix--suffix" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#442-preparing-the-prefix--suffix" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Now that we know the Preamble and Postamble apply all these MULT_3 permutations to our file, we run into a small issue with our prefix and suffix.</p>
+<p>If we just inject raw strings like <code>&lt;x&gt;</code> and <code>&lt;/x&gt;</code> into the chain, the ANTI_MULT_3 filters in the Postamble will scramble them into unreadable garbage on their way out, or much more likely, the filter will just fail.</p>
+<p>To make sure our chosen wrapper survives the final decoding process, <strong>closure</strong> pre-processes the prefix and suffix locally before even generating the payload. It achieves this by applying the exact reverse of the Postamble filter sequence to our wrapper:</p>
+<ol>
+<li><strong>Pad</strong> the desired prefix and suffix to a multiple of 4 (so the conversions don&rsquo;t fail).</li>
+<li>Apply MULT_3 to the prefix / suffix.</li>
+<li>Apply MULT_3 again.</li>
+<li><strong>Base64 Encode</strong> the result.</li>
+</ol>
+<p>The resulting characters from this preparation are the exact Base64 characters <strong>closure</strong> will need to append and prepend during the exploit. When the Postamble eventually runs, it will cleanly reverse them back to the original wanted prefix and suffix.</p>
+
+<h3 class="relative group">4.4.3. Appending the Suffix
+    <div id="443-appending-the-suffix" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#443-appending-the-suffix" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>With the Preamble applied and the file aligned, we can start building the suffix.</p>
+<p>For each character in the pre-processed suffix, <strong>closure</strong> loops through these core steps:</p>
+<ol>
+<li><strong>Lookup:</strong> Find the character&rsquo;s specific Appender in the dictionary.</li>
+<li><strong>Align:</strong> Pad the stream using QPEs and QPDs to force the exact padding this Appender requires.</li>
+<li><strong>Append:</strong> Execute the Appender chain to add the character.</li>
+<li><strong>Track:</strong> Update the stream&rsquo;s padding state for the next iteration.</li>
+</ol>
+
+<h3 class="relative group">4.4.4. Prepending the Prefix
+    <div id="444-prepending-the-prefix" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#444-prepending-the-prefix" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Prepending data happens after appending the suffix. <strong>closure</strong> uses the well-known Prependers for this, but there is a dangerous catch we have to handle first.</p>
+<p>As explained in Section 3.3.3, we must protect our built suffix by adding sacrificial garbage characters to the very end of the stream.</p>
+<p>To generate these sacrificial bytes, <strong>closure</strong> uses the Appender for the letter <strong>&lsquo;M&rsquo;</strong>.<br>
+Why &lsquo;M&rsquo; specifically? Because it is the shortest appender in the dictionary. It requires only 4 filters and appends exactly 9 bytes to the stream. Since 9 is a multiple of 3, appending &lsquo;M&rsquo; perfectly preserves the current padding state of the data, allowing us to stack as many as we need!</p>
+<p>The prepending phase works like this:</p>
+<ol>
+<li><strong>Align:</strong> Pad the stream using QPEs and QPDs to match the padding required for the &lsquo;M&rsquo; Appender.</li>
+<li><strong>Shield:</strong> Loop the &lsquo;M&rsquo; Appender to stack sacrificial characters at the end of the stream. Stack one &lsquo;M&rsquo; character for each Base64 character we will later prepend.</li>
+<li>For each character in the pre-processed prefix:
+<ul>
+<li><strong>Prepend:</strong> Apply the specific conversion for the target character.</li>
+<li><strong>Cleanup:</strong> Run B64D then B64E to strip the garbage bytes.</li>
+</ul>
+</li>
+</ol>
+<p>Because we fed the cleanup phase our sacrificial &lsquo;M&rsquo;s, our suffix survives the whole process perfectly fine.</p>
+
+<h3 class="relative group">4.4.5. The Final Chain
+    <div id="445-the-final-chain" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#445-the-final-chain" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>By combining all of these steps, we get a complete, file-size agnostic filter chain.</p>
+<p>Putting it all together, a full chain created by <strong>closure</strong> looks like this:</p>
+<ol>
+<li><strong>Preamble:</strong> Apply the Preamble chain, Base64 encode and align the target file&rsquo;s size to a multiple of \(9\).</li>
+<li><strong>Append:</strong> Loop through the suffix characters, controlling padding and using Appenders.</li>
+<li><strong>Protect:</strong> Append sacrificial &lsquo;M&rsquo; characters to protect the suffix.</li>
+<li><strong>Prepend:</strong> Loop through the prefix characters, applying Prependers and Decode/Encode cleanups.</li>
+<li><strong>Postamble:</strong> Apply the Postamble chain, leaving you with your wrapped Base64-encoded file.</li>
+</ol>
+<img src="Images/master_chain_flowchart.svg" width="700" />
+<p>And just like that, the size of your target file no longer matters. We have successfully decoupled our payload length from the file size!</p>
+<hr>
+
+<h1 class="relative group">5. Comparison to wrapwrap
+    <div id="5-comparison-to-wrapwrap" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#5-comparison-to-wrapwrap" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p>To demonstrate the impact of <strong>closure</strong> being file-size agnostic, let&rsquo;s compare its payload sizes directly against wrapwrap.</p>
+<p>We will use the prefix <code>&lt;x&gt;</code> and the suffix <code>&lt;/x&gt;</code>. While <strong>closure</strong> inherently extracts the entire target file, we will configure wrapwrap to extract the absolute minimum amount possible: just <strong>9 bytes</strong> (requesting 1 byte automatically clamps to 9 under these conditions).</p>
+<p>Using <strong>closure</strong> to read the full file produces a filter chain that is <strong>9,850 bytes</strong> long:
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt=""
+    src="Images/Pasted%20image%2020260709000549.png"
+    ></figure>
+</p>
+<p>Using wrapwrap, the smallest possible chain required to return just those 9 bytes is <strong>13,907 bytes</strong> long:
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt=""
+    src="Images/Pasted%20image%2020260709000637.png"
+    ></figure>
+</p>
+<p>At a glance, a ~4KB difference might not seem like a big deal. However, the real issue becomes apparent when we try to read larger files.</p>
+<p>Let&rsquo;s attempt to extract a standard <code>/etc/passwd</code> file, which has a size of 1,424 bytes:
+<img src="Images/Pasted%20image%2020260709000819.png" width="300" /></p>
+<p>Because <strong>closure</strong> completely decouples the chain length from the file size, its payload size remains virtually unchanged:
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt=""
+    src="Images/Pasted%20image%2020260709000954.png"
+    ></figure>
+</p>
+<p>But for wrapwrap, the chain length scales directly with the file size. To read those 1,424 bytes, the payload size balloons to a little under <strong>1 MB</strong>:
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt=""
+    src="Images/Pasted%20image%2020260709001115.png"
+    ></figure>
+</p>
+<p>As mentioned in the introduction, web servers enforce strict limits on URL lengths. A 1 MB payload will be instantly rejected by almost any target.
+By keeping the chain length static, <strong>closure</strong> allows you to bypass format restrictions and extract files of any size without hitting those limits.</p>
+<hr>
+
+<h1 class="relative group">6. Conclusion
+    <div id="6-conclusion" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#6-conclusion" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p>The main takeaway is simple: format-restricted file reads are no longer a dead end in php. If you have old bug bounty notes or pentest reports where a strict XML or JSON parser stopped your exploit track, it is time to revisit them. <strong>closure</strong> turns those discarded vulnerabilities into viable escalation paths.</p>
+<p>This tool also highlights that PHP filter chain research is far from exhausted. The hunt for shorter conversion loops, undocumented filter behaviors, or tighter padding tricks remains an open challenge.</p>
+<p>You can grab the tool from the repository <a href="https://github.com/adambedui/php-closure"  target="_blank" rel="noreferrer">here</a>.</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+
+      </div>
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top"
+    title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2026
+          
+      </p>
+    
+
+    
+    
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        
+        
+        Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+      </p>
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

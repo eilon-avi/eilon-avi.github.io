@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 750" width="100%" height="100%">
+    <defs>
+        <marker id="arrow-down" viewBox="0 0 10 10" refX="5" refY="10" markerWidth="5" markerHeight="5">
+            <path d="M 0 0 L 5 10 L 10 0 z" fill="#8b949e" />
+        </marker>
+    </defs>
+
+    <rect width="100%" height="100%" fill="#0d1117" rx="8" />
+
+    <!-- Column Headers -->
+    <text x="40" y="35" fill="#8b949e" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">STREAM DATA</text>
+    <text x="380" y="35" fill="#8b949e" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">FILTER ACTION</text>
+    <text x="960" y="35" fill="#8b949e" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">OUTPUT &amp; MUTATION</text>
+
+    <!-- Column Dividers -->
+    <line x1="360" y1="20" x2="360" y2="730" stroke="#30363d" stroke-width="1" stroke-dasharray="4" />
+    <line x1="940" y1="20" x2="940" y2="730" stroke="#30363d" stroke-width="1" stroke-dasharray="4" />
+
+    <!-- ==========================================
+         STEP 1: Base64 Encode
+         Center Y: 92.5
+         ========================================== -->
+    <rect x="20" y="55" width="1260" height="75" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    <text x="40" y="85" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">1. Base64 Encode</text>
+    
+    <text x="40" y="111" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#3fb950" font-weight="bold">secret</tspan>
+    </text>
+
+    <text x="380" y="98" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">Filter: </tspan>
+        <tspan fill="#e6edf3">convert.base64-encode</tspan>
+    </text>
+
+    <text x="960" y="98" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#79c0ff" font-weight="bold">c2VjcmV0</tspan>
+    </text>
+
+    <!-- Arrow 1 -->
+    <line x1="100" y1="130" x2="100" y2="160" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow-down)" />
+
+    <!-- ==========================================
+         STEP 2: Reverse Encoding #1
+         Center Y: 197.5
+         ========================================== -->
+    <rect x="20" y="160" width="1260" height="75" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    <text x="40" y="190" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">2. Reverse Encoding #1</text>
+    
+    <text x="40" y="216" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#79c0ff" font-weight="bold">c2VjcmV0</tspan>
+    </text>
+
+    <text x="380" y="203" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">Filter: </tspan>
+        <tspan fill="#e6edf3">iconv.437.1026</tspan>
+    </text>
+
+    <text x="960" y="203" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#ff7b72">\x83\xf2\xe5\x91\x83\x94\xe5\xf0</tspan>
+    </text>
+
+    <!-- Arrow 2 -->
+    <line x1="100" y1="235" x2="100" y2="265" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow-down)" />
+
+    <!-- ==========================================
+         STEP 3: Reverse Encoding #2
+         Center Y: 302.5
+         ========================================== -->
+    <rect x="20" y="265" width="1260" height="75" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    <text x="40" y="295" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">3. Reverse Encoding #2</text>
+    
+    <text x="40" y="321" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#ff7b72">\x83\xf2\xe5\x91\x83\x94\xe5\xf0</tspan>
+    </text>
+
+    <text x="380" y="308" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">Filter: </tspan>
+        <tspan fill="#e6edf3">iconv.8859_9.1026</tspan>
+    </text>
+
+    <text x="960" y="308" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#ff7b72">\x23\xcd\x47\x31\x23\x34\x47\xd0</tspan>
+    </text>
+
+    <!-- Arrow 3 -->
+    <line x1="100" y1="340" x2="100" y2="370" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow-down)" />
+
+    <!-- ==========================================
+         STEP 4: Appender ('t')
+         Center Y: 417.5
+         ========================================== -->
+    <rect x="20" y="370" width="1260" height="95" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    <text x="40" y="405" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">4. Base Appender ('t')</text>
+    
+    <text x="40" y="431" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#ff7b72">\x23\xcd\x47\x31\x23\x34\x47\xd0</tspan>
+    </text>
+
+    <text x="380" y="405" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">Filter: </tspan>
+        <tspan fill="#e6edf3">Appender Chain ('t')</tspan>
+    </text>
+    <text x="380" y="431" font-family="ui-monospace, Consolas, monospace" font-size="15">
+        <tspan fill="#ff7b72">QPE×3</tspan>
+        <tspan fill="#8b949e"> ➔ </tspan>
+        <tspan fill="#d2a8ff">B64D</tspan>
+        <tspan fill="#8b949e"> ➔ </tspan>
+        <tspan fill="#58a6ff">ROT13</tspan>
+        <tspan fill="#8b949e"> ➔ </tspan>
+        <tspan fill="#3fb950">QPE×2</tspan>
+        <tspan fill="#8b949e"> ➔ </tspan>
+        <tspan fill="#58a6ff">ROT13</tspan>
+        <tspan fill="#8b949e"> ➔ </tspan>
+        <tspan fill="#f0883e">RM_EQ</tspan>
+        <tspan fill="#8b949e"> ➔ </tspan>
+        <tspan fill="#d2a8ff">B64E</tspan>
+        <tspan fill="#8b949e"> ➔ </tspan>
+        <tspan fill="#ff7b72">QPD×3</tspan>
+    </text>
+
+    <text x="960" y="405" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#ff7b72">\x23\xcd\x47\x31\x23\x34\x47\xd0</tspan>
+    </text>
+    <text x="960" y="431" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">&gt;\x00|</tspan><tspan fill="#ff7b72" font-weight="bold" font-size="20">t</tspan>
+    </text>
+
+    <!-- Arrow 4 -->
+    <line x1="100" y1="465" x2="100" y2="495" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow-down)" />
+
+    <!-- ==========================================
+         STEP 5: Forward Encoding #1
+         Center Y: 542.5
+         ========================================== -->
+    <rect x="20" y="495" width="1260" height="95" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    <text x="40" y="524" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">5. Forward Encoding #1</text>
+    
+    <text x="40" y="548" font-family="ui-monospace, Consolas, monospace" font-size="15">
+        <tspan fill="#ff7b72">\x23\xcd\x47\x31\x23\x34\x47\xd0</tspan>
+    </text>
+    <text x="40" y="572" font-family="ui-monospace, Consolas, monospace" font-size="15">
+        <tspan fill="#8b949e">&gt;\x00|</tspan><tspan fill="#ff7b72" font-weight="bold" font-size="18">t</tspan>
+    </text>
+
+    <text x="380" y="548" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">Filter: </tspan>
+        <tspan fill="#e6edf3">iconv.1026.8859_9</tspan>
+    </text>
+
+    <text x="960" y="536" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#ff7b72">\x83\xf2\xe5\x91\x83\x94\xe5\xf0</tspan>
+    </text>
+    <text x="960" y="560" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">\x9e\x00\xde\xc8</tspan>
+    </text>
+
+    <!-- Arrow 5 -->
+    <line x1="100" y1="590" x2="100" y2="620" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow-down)" />
+
+    <!-- ==========================================
+         STEP 6: Forward Encoding #2
+         Center Y: 667.5
+         ========================================== -->
+    <rect x="20" y="620" width="1260" height="95" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    <text x="40" y="649" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">6. Forward Encoding #2</text>
+    
+    <text x="40" y="673" font-family="ui-monospace, Consolas, monospace" font-size="15">
+        <tspan fill="#ff7b72">\x83\xf2\xe5\x91\x83\x94\xe5\xf0</tspan>
+    </text>
+    <text x="40" y="697" font-family="ui-monospace, Consolas, monospace" font-size="15">
+        <tspan fill="#8b949e">\x9e\x00\xde\xc8</tspan>
+    </text>
+
+    <text x="380" y="673" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">Filter: </tspan>
+        <tspan fill="#e6edf3">iconv.1026.437</tspan>
+    </text>
+
+    <text x="960" y="661" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#79c0ff" font-weight="bold">c2VjcmV0</tspan>
+    </text>
+    <text x="960" y="685" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">\x92\x00\xa3</tspan><tspan fill="#d2a8ff" font-weight="bold" font-size="20">H</tspan>
+    </text>
+
+</svg>

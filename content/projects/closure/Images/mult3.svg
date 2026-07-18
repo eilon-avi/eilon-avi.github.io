@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 420">
+  <defs>
+    <!-- Arrowhead Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9ca3af" />
+    </marker>
+    
+    <!-- Soft Drop Shadow -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.05" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" rx="12" />
+
+  <!-- Horizontal Section Separators -->
+  <line x1="40" y1="140" x2="810" y2="140" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="6,6" />
+  <line x1="40" y1="270" x2="810" y2="270" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="6,6" />
+
+  <!-- Left Column: Step Explanations -->
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#1f2937">
+    <!-- Step 1 -->
+    <text x="50" y="65" font-weight="700" font-size="18">Step 1: Base64 Encoding</text>
+    <text x="50" y="90" font-size="14" fill="#4b5563">Data is read as 2 individual ASCII bytes.</text>
+    <text x="50" y="110" font-size="14" fill="#4b5563">Strictly bounded to Base64 hex limits.</text>
+
+    <!-- Step 2 -->
+    <text x="50" y="195" font-weight="700" font-size="18">Step 2: Read as UTF-16</text>
+    <text x="50" y="220" font-size="14" fill="#4b5563">PHP reads the 2 bytes as a single character,</text>
+    <text x="50" y="240" font-size="14" fill="#4b5563">forcing it into the U+0800 - U+FFFF range.</text>
+
+    <!-- Step 3 -->
+    <text x="50" y="325" font-weight="700" font-size="18">Step 3: Convert to UTF-8</text>
+    <text x="50" y="350" font-size="14" fill="#4b5563">The single character beautifully expands</text>
+    <text x="50" y="370" font-size="14" fill="#4b5563">into exactly 3 bytes (a 1.5x multiplier).</text>
+  </g>
+
+  <!-- Right Column: Visual Diagram -->
+  <g filter="url(#shadow)">
+    <!-- Step 1 Nodes (Blue) -->
+    <rect x="510" y="45" width="80" height="65" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
+    <rect x="610" y="45" width="80" height="65" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
+    
+    <!-- Step 2 Node (Purple) -->
+    <rect x="510" y="175" width="180" height="65" rx="8" fill="#faf5ff" stroke="#a855f7" stroke-width="2" />
+    
+    <!-- Step 3 Nodes (Green) -->
+    <rect x="440" y="305" width="80" height="65" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="2" />
+    <rect x="560" y="305" width="80" height="65" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="2" />
+    <rect x="680" y="305" width="80" height="65" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="2" />
+  </g>
+
+  <!-- Connecting Arrows -->
+  <g stroke="#9ca3af" stroke-width="2" fill="none">
+    <!-- Step 1 to Step 2 -->
+    <path d="M 550 115 L 585 165" marker-end="url(#arrow)" />
+    <path d="M 650 115 L 615 165" marker-end="url(#arrow)" />
+    
+    <!-- Step 2 to Step 3 -->
+    <path d="M 560 245 L 490 295" marker-end="url(#arrow)" />
+    <path d="M 600 245 L 600 295" marker-end="url(#arrow)" />
+    <path d="M 640 245 L 710 295" marker-end="url(#arrow)" />
+  </g>
+
+  <!-- Text Inside Nodes (Monospace) -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" text-anchor="middle">
+    <!-- Step 1 Text -->
+    <text x="550" y="70" font-size="16" font-weight="700" fill="#1e3a8a">'a'</text>
+    <text x="550" y="95" font-size="14" fill="#2563eb">0x61</text>
+    
+    <text x="650" y="70" font-size="16" font-weight="700" fill="#1e3a8a">'B'</text>
+    <text x="650" y="95" font-size="14" fill="#2563eb">0x42</text>
+
+    <!-- Step 2 Text -->
+    <text x="600" y="215" font-size="20" font-weight="700" fill="#7e22ce">U+6142</text>
+
+    <!-- Step 3 Text -->
+    <text x="480" y="345" font-size="20" font-weight="700" fill="#15803d">0xE6</text>
+    <text x="600" y="345" font-size="20" font-weight="700" fill="#15803d">0x85</text>
+    <text x="720" y="345" font-size="20" font-weight="700" fill="#15803d">0x82</text>
+  </g>
+</svg>

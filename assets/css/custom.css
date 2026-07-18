@@ -1,0 +1,68 @@
+/* =========================================
+   LIGHT MODE: Soft Ambient Colors
+   Black text remains highly readable
+   ========================================= */
+body {
+  background-color: #f8fafc !important; /* Clean, soft slate-white base */
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),   /* Faint Purple Top-Left */
+    radial-gradient(at 100% 0%, rgba(20, 184, 166, 0.15) 0px, transparent 50%), /* Faint Teal Top-Right */
+    radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%) !important; /* Faint Blue Bottom */
+  background-attachment: fixed;
+}
+
+/* =========================================
+   DARK MODE: Deep Rich Ambient Colors
+   White text pops beautifully
+   ========================================= */
+html.dark body, .dark body {
+  background-color: #020617 !important; /* Extremely dark blue/black base */
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(76, 29, 149, 0.4) 0px, transparent 50%),     /* Deep Purple Top-Left */
+    radial-gradient(at 100% 0%, rgba(15, 118, 110, 0.3) 0px, transparent 50%),  /* Deep Teal Top-Right */
+    radial-gradient(at 50% 100%, rgba(30, 58, 138, 0.4) 0px, transparent 50%) !important; /* Deep Blue Bottom */
+  background-attachment: fixed;
+}
+
+/* =========================================
+   FIX BLOWFISH BACKGROUND OVERRIDES
+   Ensures the gradient isn't covered up by solid blocks
+   ========================================= */
+.bg-neutral, .dark .bg-neutral {
+  background-color: transparent !important;
+}
+
+/* Add a slight frosted glass effect to content blocks to keep text readable */
+article {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 1rem;
+}
+html.dark article {
+  background-color: rgba(15, 23, 42, 0.4);
+}
+
+
+/* This targets the article content specifically */
+article .prose {
+    /* 1. Sets a new, much wider desktop limit (Default is ~65ch/650px) */
+    max-width: 1000px !important; 
+    
+    /* 2. Ensures it never exceeds the screen width on mobile */
+    width: 100% !important; 
+    
+    /* 3. Keeps the text centered on the screen */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* This targets the header/title area so it matches the new width */
+.max-w-prose {
+    max-width: 1000px !important;
+}
+
+.chroma .err {
+  background-color: transparent !important;
+  color: inherit !important;
+}

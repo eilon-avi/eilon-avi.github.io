@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 480" width="100%" height="100%">
+    <defs>
+        <marker id="arrow-down" viewBox="0 0 10 10" refX="5" refY="10" markerWidth="5" markerHeight="5">
+            <path d="M 0 0 L 5 10 L 10 0 z" fill="#8b949e" />
+        </marker>
+    </defs>
+
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="#0d1117" rx="8" />
+
+    <!-- Column Headers -->
+    <text x="40" y="35" fill="#8b949e" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">STREAM DATA</text>
+    <text x="440" y="35" fill="#8b949e" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">SHIFT &amp; ALIGN (MODULO 3)</text>
+    <text x="720" y="35" fill="#8b949e" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">BASE64 OUTPUT &amp; PADDING</text>
+
+    <!-- Vertical Dividers (Subtle) -->
+    <line x1="410" y1="20" x2="410" y2="460" stroke="#30363d" stroke-width="1" stroke-dasharray="4" />
+    <line x1="690" y1="20" x2="690" y2="460" stroke="#30363d" stroke-width="1" stroke-dasharray="4" />
+
+    <!-- ================= CARD 1: INFLATE_2 ================= -->
+    <rect x="20" y="55" width="1060" height="100" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    
+    <text x="40" y="80" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">1. INFLATE_2</text>
+    
+    <!-- Code Stream -->
+    <rect x="36" y="90" width="86" height="26" rx="4" fill="#ff7b72" fill-opacity="0.15" stroke="#ff7b72" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="42" y="109" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#ff7b72">\xff\xfe</tspan>
+        <tspan fill="#8b949e" dx="5">SGVsbG9HdXlz</tspan>
+    </text>
+
+    <!-- Math Pipeline -->
+    <text x="440" y="109" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">Len: </tspan>
+        <tspan fill="#e6edf3">14b</tspan>
+        <tspan fill="#8b949e"> ➔ 14 % 3 = </tspan>
+        <tspan fill="#79c0ff" font-weight="bold">2</tspan>
+    </text>
+
+    <!-- Output -->
+    <text x="720" y="102" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#c9d1d9">//5TR1ZzYkc5SGRYbHo</tspan>
+        <tspan fill="#d2a8ff" font-weight="bold" font-size="18">=</tspan>
+    </text>
+    <text x="720" y="122" font-family="system-ui, sans-serif" font-size="13" fill="#d2a8ff">(1 padding char)</text>
+
+    <!-- Down Arrow 1 -->
+    <line x1="160" y1="158" x2="160" y2="200" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow-down)" />
+
+    <!-- ================= CARD 2: QPE ================= -->
+    <rect x="20" y="205" width="1060" height="100" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    
+    <text x="40" y="230" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">2. QPE #1</text>
+    
+    <!-- Code Stream -->
+    <rect x="36" y="240" width="67" height="26" rx="4" fill="#ff7b72" fill-opacity="0.15" stroke="#ff7b72" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="42" y="259" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#ff7b72">=FF=FE</tspan>
+        <tspan fill="#8b949e" dx="5">SGVsbG9HdXlz</tspan>
+    </text>
+
+    <!-- Math Pipeline -->
+    <text x="440" y="259" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">Len: </tspan>
+        <tspan fill="#e6edf3">18b</tspan>
+        <tspan fill="#8b949e"> ➔ 18 % 3 = </tspan>
+        <tspan fill="#79c0ff" font-weight="bold">0</tspan>
+    </text>
+
+    <!-- Output -->
+    <text x="720" y="252" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#c9d1d9">PUZGPUZFU0dWc2JHOUhkWGx6</tspan>
+    </text>
+    <text x="720" y="272" font-family="system-ui, sans-serif" font-size="13" fill="#8b949e">(0 padding chars)</text>
+
+    <!-- Down Arrow 2 -->
+    <line x1="160" y1="308" x2="160" y2="350" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow-down)" />
+
+    <!-- ================= CARD 3: QPE x2 ================= -->
+    <rect x="20" y="355" width="1060" height="100" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    
+    <text x="40" y="380" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">3. QPE #2</text>
+    
+    <!-- Code Stream -->
+    <rect x="36" y="390" width="106" height="26" rx="4" fill="#ff7b72" fill-opacity="0.15" stroke="#ff7b72" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="42" y="409" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#ff7b72">=3DFF=3DFE</tspan>
+        <tspan fill="#8b949e" dx="5">SGVsbG9HdXlz</tspan>
+    </text>
+
+    <!-- Math Pipeline -->
+    <text x="440" y="409" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">Len: </tspan>
+        <tspan fill="#e6edf3">22b</tspan>
+        <tspan fill="#8b949e"> ➔ 22 % 3 = </tspan>
+        <tspan fill="#79c0ff" font-weight="bold">1</tspan>
+    </text>
+
+    <!-- Output -->
+    <text x="720" y="402" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#c9d1d9">PTNERkY9M0RGRVNHVnNiRzlIZFhseg</tspan>
+        <tspan fill="#d2a8ff" font-weight="bold" font-size="18">==</tspan>
+    </text>
+    <text x="720" y="422" font-family="system-ui, sans-serif" font-size="13" fill="#d2a8ff">(2 padding chars)</text>
+
+</svg>

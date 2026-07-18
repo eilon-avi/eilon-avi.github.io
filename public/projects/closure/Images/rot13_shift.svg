@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 420" width="100%" height="100%">
+    <defs>
+        <marker id="arrow-down" viewBox="0 0 10 10" refX="5" refY="10" markerWidth="5" markerHeight="5">
+            <path d="M 0 0 L 5 10 L 10 0 z" fill="#8b949e" />
+        </marker>
+    </defs>
+
+    <rect width="100%" height="100%" fill="#0d1117" rx="8" />
+
+    <!-- Column Headers -->
+    <text x="40" y="35" fill="#8b949e" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">STREAM DATA</text>
+    <text x="470" y="35" fill="#8b949e" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">FILTER ACTION</text>
+    <text x="850" y="35" fill="#8b949e" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">OUTPUT &amp; MUTATION</text>
+
+    <!-- Column Dividers -->
+    <line x1="440" y1="20" x2="440" y2="400" stroke="#30363d" stroke-width="1" stroke-dasharray="4" />
+    <line x1="820" y1="20" x2="820" y2="400" stroke="#30363d" stroke-width="1" stroke-dasharray="4" />
+
+    <!-- ==========================================
+         Card 1: ROT13 #1
+         ========================================== -->
+    <rect x="20" y="55" width="1260" height="80" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    <text x="40" y="82" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">1. ROT13 #1</text>
+    
+    <text x="40" y="112" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#79c0ff">UTJ4dmMzVnlaU0JFWlcxdg</tspan><tspan fill="#d2a8ff" font-weight="bold">==</tspan>
+    </text>
+
+    <text x="470" y="100" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">Filter: </tspan>
+        <tspan fill="#e6edf3">string.rot13</tspan>
+    </text>
+
+    <text x="850" y="100" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#ff7b72">HGW4qzZmIaynH0WSJypkqt</tspan><tspan fill="#d2a8ff" font-weight="bold">==</tspan>
+    </text>
+
+    <!-- Arrow 1 -->
+    <line x1="240" y1="135" x2="240" y2="165" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow-down)" />
+
+    <!-- ==========================================
+         Card 2: Append 'M'
+         ========================================== -->
+    <rect x="20" y="165" width="1260" height="90" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    <text x="40" y="192" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">2. Append 'M'</text>
+    
+    <text x="40" y="222" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#ff7b72">HGW4qzZmIaynH0WSJypkqt</tspan><tspan fill="#d2a8ff" font-weight="bold">==</tspan>
+    </text>
+
+    <text x="470" y="203" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">Filter: </tspan>
+        <tspan fill="#e6edf3">Appender Chain ('M')</tspan>
+    </text>
+    <text x="470" y="228" font-family="ui-monospace, Consolas, monospace" font-size="14">
+        <tspan fill="#ff7b72">QPE</tspan>
+        <tspan fill="#8b949e"> ➔ </tspan>
+        <tspan fill="#d2a8ff">RM_EQ</tspan>
+        <tspan fill="#8b949e"> ➔ </tspan>
+        <tspan fill="#3fb950">B64D</tspan>
+    </text>
+
+    <text x="850" y="203" font-family="ui-monospace, Consolas, monospace" font-size="15">
+        <tspan fill="#ff7b72">HGW4qzZmIaynH0WSJypkqt</tspan>
+    </text>
+    <text x="850" y="228" font-family="ui-monospace, Consolas, monospace" font-size="15">
+        <tspan fill="#8b949e">\x0f\x80\x0f</tspan><tspan fill="#ff7b72" font-weight="bold" font-size="20">M</tspan><tspan fill="#8b949e">\xc3\xf8\x00\xf4\xdc</tspan>
+    </text>
+
+    <!-- Arrow 2 -->
+    <line x1="240" y1="255" x2="240" y2="285" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow-down)" />
+
+    <!-- ==========================================
+         Card 3: ROT13 #2
+         ========================================== -->
+    <rect x="20" y="285" width="1260" height="100" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+    <text x="40" y="314" fill="#58a6ff" font-family="system-ui, sans-serif" font-size="15" font-weight="bold">3. ROT13 #2</text>
+    
+    <text x="40" y="344" font-family="ui-monospace, Consolas, monospace" font-size="15">
+        <tspan fill="#ff7b72">HGW4qzZmIaynH0WSJypkqt</tspan>
+    </text>
+    <text x="40" y="369" font-family="ui-monospace, Consolas, monospace" font-size="15">
+        <tspan fill="#8b949e">\x0f\x80\x0f</tspan><tspan fill="#ff7b72" font-weight="bold" font-size="18">M</tspan><tspan fill="#8b949e">\xc3\xf8\x00\xf4\xdc</tspan>
+    </text>
+
+    <text x="470" y="340" font-family="ui-monospace, Consolas, monospace" font-size="16">
+        <tspan fill="#8b949e">Filter: </tspan>
+        <tspan fill="#e6edf3">string.rot13</tspan>
+    </text>
+
+    <text x="850" y="328" font-family="ui-monospace, Consolas, monospace" font-size="15">
+        <tspan fill="#3fb950" font-weight="bold">UTJ4dmMzVnlaU0JFWlcxdg</tspan>
+    </text>
+    <text x="850" y="353" font-family="ui-monospace, Consolas, monospace" font-size="15">
+        <tspan fill="#8b949e">\x0f\x80\x0f</tspan><tspan fill="#d2a8ff" font-weight="bold" font-size="20">Z</tspan><tspan fill="#8b949e">\xc3\xf8\x00\xf4\xdc</tspan>
+    </text>
+
+</svg>
