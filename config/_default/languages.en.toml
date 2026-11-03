@@ -17,6 +17,7 @@ title = "Eilon Avizemer | Blog"
 [params.author]
   links = [
     { linkedin = "https://www.linkedin.com/in/eilon-avizemer/" },
+    { github = "https://github.com/eilon-avi" },
   ]
 
 # [params.author]
