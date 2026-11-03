@@ -78,11 +78,11 @@ But how could we do it, you may ask...
 
 There is some incredibly clever research and tooling surrounding PHP filter chains. For example, **Ambionics' [lightyear](https://github.com/ambionics/lightyear)** is an awesome tool that allows you to exfiltrate arbitrary file contents under blind LFI conditions!
 
-But for the specific problem I needed to solve, these two tools were my starting point:
+For the specific problem I needed to solve, two tools mattered:
 
-- **Synacktiv's [php_filter_chain_generator](https://github.com/synacktiv/php_filter_chain_generator):** This was the first tool to automate PHP filter chain generation. Rather than modifying existing files, it generates arbitrary content directly in memory. This allows escalating standard LFI into full RCE without ever needing to upload a file to the server.
+- **Synacktiv's [php_filter_chain_generator](https://github.com/synacktiv/php_filter_chain_generator):** This was the first tool to automate PHP filter chain generation. Rather than modifying existing files, it generates arbitrary content directly in memory. This allows escalating standard LFI into full RCE without ever needing to upload a file to the server. closure's prefix uses this prepending technique (see Section 3.3).
 
-- **Ambionics' [wrapwrap](https://github.com/ambionics/wrapwrap):** Building on Synacktiv’s work, Ambionics discovered a clever way to add arbitrary **prefixes** and **suffixes** to existing files, making it possible to bypass most format restrictions and extract arbitrary file contents.
+- **Ambionics' [wrapwrap](https://github.com/ambionics/wrapwrap):** Building on Synacktiv’s work, Ambionics discovered a clever way to add arbitrary **prefixes** and **suffixes** to existing files, making it possible to bypass most format restrictions and extract arbitrary file contents. It's the closest existing tool to closure, and closure takes a different route to the suffix.
 
 So **wrapwrap** sounds like the exact solution to my situation right? so what's the problem?
 
